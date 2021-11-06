@@ -37,7 +37,8 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false, // if user enters any other meetupId that is not in the paths array, a 404 page will be shown
+    //fallback: false, // if user enters any other meetupId that is not in the paths array, a 404 page will be shown
+    fallback: "blocking", // setting fallback to true or 'blocking' you are telling nextJS that the list of paths which you are specifing here might not be exahaustive there might be more valid pages
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
